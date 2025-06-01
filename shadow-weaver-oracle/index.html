@@ -3,28 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shadow Weaver Oracle</title>
-    <meta name="description" content="Step into the shadows and discover your mystical destiny with the Shadow Weaver Oracle. Free interactive tarot experience.">
-    <meta name="keywords" content="tarot, oracle, mystical, Shadow Weaver, White Raven Tales, fortune telling">
+    <title>Shadow Weaver Oracle - Ancient Wisdom for Modern Souls</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 50%, #0a0a1a 100%);
-            font-family: 'Orbitron', monospace;
-            color: #00ffff;
+            font-family: 'Crimson Text', serif;
+            background: linear-gradient(135deg, #0a0f1c 0%, #1a1f2e 50%, #2a2f3e 100%);
+            color: #e8ddc7;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
-        
-        /* CRT Scanlines Effect */
+
+        /* Mystical Background Effects */
         body::before {
             content: '';
             position: fixed;
@@ -32,56 +29,110 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                transparent,
-                transparent 2px,
-                rgba(0, 255, 255, 0.03) 2px,
-                rgba(0, 255, 255, 0.03) 4px
-            );
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(251, 191, 36, 0.05) 0%, transparent 50%);
             pointer-events: none;
-            z-index: 100;
+            z-index: -1;
         }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
+
+        /* Floating Particles */
+        .particle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: rgba(251, 191, 36, 0.6);
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 1;
         }
-        
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) translateX(0px);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            50% { 
+                transform: translateY(-100px) translateX(50px);
+                opacity: 0.8;
+            }
+        }
+
+        /* Header */
         .header {
-            margin-bottom: 40px;
-            animation: glow 2s ease-in-out infinite alternate;
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, transparent 100%);
+            border-bottom: 1px solid rgba(251, 191, 36, 0.2);
         }
-        
+
         .title {
-            font-size: 3rem;
-            font-weight: 900;
-            text-shadow: 
-                0 0 10px #00ffff,
-                0 0 20px #00ffff,
-                0 0 30px #00ffff,
-                0 0 40px #ff00ff;
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #e8ddc7;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
             margin-bottom: 10px;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
-        
+
         .subtitle {
-            font-size: 1.2rem;
-            color: #ff00ff;
-            text-shadow: 0 0 10px #ff00ff;
-            font-weight: 400;
+            font-size: 1.3rem;
+            color: #a0a0a0;
+            font-style: italic;
+            margin-bottom: 20px;
         }
-        
+
+        .raven-symbol {
+            font-size: 2rem;
+            color: #fbbf24;
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.7);
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 15px rgba(251, 191, 36, 0.7); }
+            to { text-shadow: 0 0 25px rgba(251, 191, 36, 1), 0 0 35px rgba(251, 191, 36, 0.5); }
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Oracle Card Section */
+        .oracle-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .oracle-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #c0c0c0;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Card Container */
         .card-container {
             perspective: 1000px;
-            margin: 50px auto;
-            width: 300px;
-            height: 450px;
+            margin: 40px auto;
+            width: 280px;
+            height: 400px;
             position: relative;
         }
-        
+
         .card {
             width: 100%;
             height: 100%;
@@ -90,325 +141,489 @@
             transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
         }
-        
+
         .card.flipped {
             transform: rotateY(180deg);
         }
-        
+
         .card-face {
             position: absolute;
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
             border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            border: 3px solid #00ffff;
             box-shadow: 
-                0 0 20px rgba(0, 255, 255, 0.5),
-                inset 0 0 20px rgba(0, 255, 255, 0.1);
+                0 10px 30px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(59, 130, 246, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(251, 191, 36, 0.3);
         }
-        
+
         .card-back {
-            background: linear-gradient(45deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
-        
-        .card-front {
-            background: linear-gradient(45deg, #2d1b4e 0%, #1a1a2e 50%, #0f0f23 100%);
-            transform: rotateY(180deg);
-        }
-        
-        .card-pattern {
-            font-size: 4rem;
-            margin-bottom: 20px;
-            animation: float 3s ease-in-out infinite;
-        }
-        
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #00ffff;
-            text-shadow: 0 0 10px #00ffff;
-        }
-        
-        .card-meaning {
-            font-size: 0.9rem;
-            line-height: 1.4;
-            color: #ff00ff;
-            text-align: center;
-            max-width: 250px;
-        }
-        
-        .draw-button {
-            background: linear-gradient(45deg, #ff00ff, #00ffff);
-            border: none;
-            color: #000;
-            font-family: 'Orbitron', monospace;
-            font-size: 1.2rem;
-            font-weight: 700;
-            padding: 15px 40px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin: 30px 10px;
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
-        }
-        
-        .draw-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 0, 255, 0.8);
-        }
-        
-        .draw-button:active {
-            transform: scale(0.95);
-        }
-        
-        .footer {
-            margin-top: 50px;
-            font-size: 0.8rem;
-            color: #666;
-            text-shadow: 0 0 5px #00ffff;
-        }
-        
-        .footer a {
-            color: #00ffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer a:hover {
-            color: #ff00ff;
-        }
-        
-        .mystical-symbols {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
+
+        .card-back-design {
+            width: 80%;
+            height: 80%;
+            border: 3px solid #fbbf24;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+            position: relative;
             overflow: hidden;
         }
-        
-        .symbol {
+
+        .card-back-design::before {
+            content: '';
             position: absolute;
-            color: rgba(0, 255, 255, 0.1);
+            top: 50%;
+            left: 50%;
+            width: 120%;
+            height: 120%;
+            background: conic-gradient(from 0deg, transparent, rgba(251, 191, 36, 0.2), transparent);
+            transform: translate(-50%, -50%) rotate(0deg);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .raven-emblem {
+            font-size: 4rem;
+            color: #fbbf24;
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.8);
+            z-index: 1;
+            position: relative;
+        }
+
+        .card-back-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            color: #e8ddc7;
+            margin-top: 10px;
+            z-index: 1;
+            position: relative;
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #fbbf24;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(251, 191, 36, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .card-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, rgba(139, 92, 246, 0.2) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #e8ddc7;
+            border: 2px solid rgba(251, 191, 36, 0.4);
+            margin: 15px 0;
+        }
+
+        .card-message {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #c0c0c0;
+            text-align: center;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            font-family: 'Cinzel', serif;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.2) 0%, rgba(251, 191, 36, 0.1) 100%);
+            border: 2px solid rgba(251, 191, 36, 0.5);
+            border-radius: 8px;
+            color: #e8ddc7;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(251, 191, 36, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, rgba(251, 191, 36, 0.3) 0%, rgba(251, 191, 36, 0.2) 100%);
+            border-color: rgba(251, 191, 36, 0.8);
+            box-shadow: 0 5px 15px rgba(251, 191, 36, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Wisdom Section */
+        .wisdom-section {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 100%);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .wisdom-title {
+            font-family: 'Cinzel', serif;
             font-size: 2rem;
-            animation: float 6s ease-in-out infinite;
+            color: #fbbf24;
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
         }
-        
-        @keyframes glow {
-            from { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff; }
-            to { text-shadow: 0 0 15px #ff00ff, 0 0 25px #ff00ff, 0 0 35px #ff00ff; }
+
+        .wisdom-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #d0d0d0;
+            font-style: italic;
+            max-width: 700px;
+            margin: 0 auto;
         }
-        
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(251, 191, 36, 0.2);
+            background: linear-gradient(0deg, rgba(0,0,0,0.3) 0%, transparent 100%);
         }
-        
+
+        .footer-text {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .footer-symbol {
+            color: #fbbf24;
+            margin: 0 10px;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .title { font-size: 2rem; }
-            .subtitle { font-size: 1rem; }
-            .card-container { width: 250px; height: 375px; }
-            .container { padding: 10px; }
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .card-container {
+                width: 240px;
+                height: 340px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 200px;
+            }
+            
+            .wisdom-section {
+                padding: 25px;
+                margin: 20px 0;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: none;
+            text-align: center;
+            color: #fbbf24;
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(251, 191, 36, 0.3);
+            border-radius: 50%;
+            border-top-color: #fbbf24;
+            animation: spin 1s ease-in-out infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
 <body>
-    <div class="mystical-symbols">
-        <div class="symbol" style="top: 10%; left: 10%;">🔮</div>
-        <div class="symbol" style="top: 20%; right: 15%;">⭐</div>
-        <div class="symbol" style="bottom: 30%; left: 20%;">🌙</div>
-        <div class="symbol" style="bottom: 20%; right: 10%;">✨</div>
-    </div>
-    
+    <!-- Floating Particles -->
+    <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
+    <div class="particle" style="left: 30%; animation-delay: 4s;"></div>
+    <div class="particle" style="left: 40%; animation-delay: 1s;"></div>
+    <div class="particle" style="left: 50%; animation-delay: 3s;"></div>
+    <div class="particle" style="left: 60%; animation-delay: 5s;"></div>
+    <div class="particle" style="left: 70%; animation-delay: 1.5s;"></div>
+    <div class="particle" style="left: 80%; animation-delay: 3.5s;"></div>
+    <div class="particle" style="left: 90%; animation-delay: 0.5s;"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <h1 class="title">Shadow Weaver Oracle</h1>
+        <p class="subtitle">Ancient Wisdom for Modern Souls</p>
+        <div class="raven-symbol">🐦‍⬛</div>
+    </header>
+
+    <!-- Main Container -->
     <div class="container">
-        <div class="header">
-            <h1 class="title">SHADOW WEAVER</h1>
-            <p class="subtitle">Oracle of the Mystical Realm</p>
-        </div>
-        
-        <div class="card-container">
-            <div class="card" id="tarotCard">
-                <div class="card-face card-back">
-                    <div class="card-pattern">🔮</div>
-                    <div class="card-title">The Mysteries Call...</div>
-                    <div class="card-meaning">Click the card to reveal your destiny</div>
-                </div>
-                <div class="card-face card-front" id="cardFront">
-                    <div class="card-pattern" id="cardSymbol">🌟</div>
-                    <div class="card-title" id="cardName">The Mystic</div>
-                    <div class="card-meaning" id="cardMeaning">Great changes are approaching...</div>
+        <!-- Oracle Section -->
+        <section class="oracle-section">
+            <p class="oracle-description">
+                Welcome, seeker of truth. I am Shadow Weaver, guardian of the liminal spaces where ancient wisdom meets modern understanding. Draw a card and receive guidance from the realm where ravens carry messages between worlds.
+            </p>
+
+            <!-- Card Container -->
+            <div class="card-container">
+                <div class="card" id="oracle-card">
+                    <div class="card-face card-back">
+                        <div class="card-back-design">
+                            <div class="raven-emblem">🐦‍⬛</div>
+                            <div class="card-back-text">Shadow Weaver Oracle</div>
+                        </div>
+                    </div>
+                    <div class="card-face card-front">
+                        <div class="card-title" id="card-title">The Seeker's Path</div>
+                        <div class="card-image" id="card-symbol">🔮</div>
+                        <div class="card-message" id="card-message">
+                            Click "Draw Card" to receive your guidance from the shadows between worlds.
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <button class="draw-button" onclick="drawCard()">Draw Card</button>
-        <button class="draw-button" onclick="resetCard()">New Reading</button>
-        
-        <div class="footer">
-            <p>A Creation by <a href="https://github.com/RoboSyntax/white-raven-interactive-apps" target="_blank">White Raven Tales</a> • <a href="https://synthcircuit.fm" target="_blank">SynthCircuit.fm</a></p>
-        </div>
+
+            <!-- Loading Animation -->
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                The ravens are consulting the ancient wisdom...
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn" id="draw-card" onclick="drawCard()">Draw Card</button>
+                <button class="btn" id="new-reading" onclick="newReading()" style="display: none;">New Reading</button>
+            </div>
+        </section>
+
+        <!-- Wisdom Section -->
+        <section class="wisdom-section">
+            <h2 class="wisdom-title">The Shadow Weaver's Wisdom</h2>
+            <p class="wisdom-text">
+                "In the spaces between light and darkness, between the known and unknown, true wisdom awaits those brave enough to seek it. Each card drawn is not mere chance, but a reflection of the currents that flow through your soul."
+            </p>
+        </section>
     </div>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <p class="footer-text">
+            <span class="footer-symbol">🐦‍⬛</span>
+            Shadow Weaver Oracle • Part of the White Raven Tales Universe
+            <span class="footer-symbol">🐦‍⬛</span>
+        </p>
+    </footer>
+
     <script>
-        const tarotCards = [
+        // Oracle Cards Database
+        const oracleCards = [
             {
-                name: "The Shadow Walker",
-                symbol: "🌙",
-                meaning: "Hidden truths will reveal themselves. Trust your intuition and follow the signs that only you can see."
+                title: "The Threshold Guardian",
+                symbol: "🚪",
+                message: "You stand at the threshold of transformation. What you fear most may be the very thing that leads to your greatest growth. Trust in your ability to navigate the unknown."
             },
             {
-                name: "The Time Keeper", 
-                symbol: "⏳",
-                meaning: "Patience is your greatest strength. What seems impossible today will become your reality tomorrow."
+                title: "The Whispering Raven",
+                symbol: "🐦‍⬛",
+                message: "Listen to the subtle messages around you. The universe speaks through synchronicities, dreams, and unexpected encounters. Your intuition is your compass."
             },
             {
-                name: "The Whisperer",
-                symbol: "👁️",
-                meaning: "Secrets surround you. Listen to the quiet voices others miss - they will guide you to success."
+                title: "The Mirror of Truth",
+                symbol: "🪞",
+                message: "What you see in others is often a reflection of something within yourself. Use this awareness not for judgment, but for deeper understanding and growth."
             },
             {
-                name: "The Mist Walker",
-                symbol: "🌫️", 
-                meaning: "Clarity comes through confusion. Let the fog sharpen your senses rather than blind you."
+                title: "The Anchor of Strength",
+                symbol: "⚓",
+                message: "In turbulent times, remember your core values and authentic self. Like an anchor in a storm, these truths will keep you grounded while the surface world shifts."
             },
             {
-                name: "The Star Dancer",
-                symbol: "✨",
-                meaning: "Your dreams are prophecies. What you see at night will take shape during the day."
+                title: "The Crossroads",
+                symbol: "🛤️",
+                message: "Every choice creates your reality. Trust that there are no wrong paths, only different lessons. Choose with intention, not fear."
             },
             {
-                name: "The Rune Master",
-                symbol: "📜",
-                meaning: "Ancient wisdom returns. A forgotten skill will pave your path to success."
-            },
-            {
-                name: "The Moon Witch",
-                symbol: "🔮",
-                meaning: "Your magical powers awaken. Use them wisely, for with great power comes great responsibility."
-            },
-            {
-                name: "The Shadow Collector",
-                symbol: "🦇",
-                meaning: "What others fear is your strength. Embrace your dark side - it holds untold possibilities."
-            },
-            {
-                name: "The Crystal Seer",
+                title: "The Hidden Treasure",
                 symbol: "💎",
-                meaning: "Clarity pierces through illusion. An important decision will prove to be the right one."
+                message: "Your greatest gifts often lie hidden in your perceived weaknesses. What you've been taught to hide may be exactly what the world needs to see."
             },
             {
-                name: "The Storm Caller",
-                symbol: "⚡",
-                meaning: "Change approaches like a storm. Prepare yourself - what's coming will transform everything."
-            },
-            {
-                name: "The Dream Weaver",
+                title: "The Weaver's Thread",
                 symbol: "🕸️",
-                meaning: "Your visions weave into reality. Continue spinning your web of destiny."
+                message: "All things are connected in ways both seen and unseen. Your actions ripple through the web of existence, creating patterns beyond your imagination."
             },
             {
-                name: "The Soul Guide",
-                symbol: "🗝️",
-                meaning: "A key to hidden doors lies before you. Open boldly what seemed locked away."
+                title: "The Phoenix Rising",
+                symbol: "🔥",
+                message: "From the ashes of what no longer serves, your authentic self emerges. Embrace this process of death and rebirth—it is how souls evolve."
+            },
+            {
+                title: "The Silent Wisdom",
+                symbol: "🤫",
+                message: "Sometimes the most powerful action is stillness. In the quiet spaces, profound understanding dawns. Listen to what silence teaches."
+            },
+            {
+                title: "The Light Bearer",
+                symbol: "🕯️",
+                message: "You are called to be a beacon for others. Your journey through darkness has given you a light to share. Trust in your ability to guide and inspire."
+            },
+            {
+                title: "The Shape Shifter",
+                symbol: "🌙",
+                message: "Adaptability is your superpower. Like the moon, you can change form while maintaining your essential nature. Flow with life's transformations."
+            },
+            {
+                title: "The Ancient Tree",
+                symbol: "🌳",
+                message: "Your roots run deep, connecting you to wisdom that spans generations. Draw strength from this ancestral knowledge while reaching toward new growth."
             }
         ];
 
-        let currentCard = null;
-        let isCardFlipped = false;
-
+        // Card Drawing Function
         function drawCard() {
-            if (isCardFlipped) {
-                resetCard();
-                setTimeout(drawCard, 500);
-                return;
-            }
-            
-            const randomIndex = Math.floor(Math.random() * tarotCards.length);
-            currentCard = tarotCards[randomIndex];
-            
-            // Update card content
-            document.getElementById('cardSymbol').textContent = currentCard.symbol;
-            document.getElementById('cardName').textContent = currentCard.name;
-            document.getElementById('cardMeaning').textContent = currentCard.meaning;
-            
-            // Flip card
-            document.getElementById('tarotCard').classList.add('flipped');
-            isCardFlipped = true;
-            
-            // Add some mystical effects
-            createMysticalParticles();
-        }
+            const card = document.getElementById('oracle-card');
+            const loading = document.getElementById('loading');
+            const drawButton = document.getElementById('draw-card');
+            const newButton = document.getElementById('new-reading');
 
-        function resetCard() {
-            document.getElementById('tarotCard').classList.remove('flipped');
-            isCardFlipped = false;
-            currentCard = null;
-        }
+            // Show loading
+            loading.classList.add('active');
+            drawButton.style.display = 'none';
 
-        function createMysticalParticles() {
-            for (let i = 0; i < 5; i++) {
+            // Simulate oracle consultation time
+            setTimeout(() => {
+                // Get random card
+                const randomCard = oracleCards[Math.floor(Math.random() * oracleCards.length)];
+
+                // Update card content
+                document.getElementById('card-title').textContent = randomCard.title;
+                document.getElementById('card-symbol').textContent = randomCard.symbol;
+                document.getElementById('card-message').textContent = randomCard.message;
+
+                // Hide loading
+                loading.classList.remove('active');
+
+                // Flip card
+                card.classList.add('flipped');
+
+                // Show new reading button
                 setTimeout(() => {
-                    const particle = document.createElement('div');
-                    particle.style.position = 'fixed';
-                    particle.style.color = Math.random() > 0.5 ? '#00ffff' : '#ff00ff';
-                    particle.style.fontSize = '1rem';
-                    particle.style.pointerEvents = 'none';
-                    particle.style.zIndex = '200';
-                    particle.textContent = ['✨', '🌟', '⭐', '💫'][Math.floor(Math.random() * 4)];
-                    
-                    const cardRect = document.getElementById('tarotCard').getBoundingClientRect();
-                    particle.style.left = (cardRect.left + Math.random() * cardRect.width) + 'px';
-                    particle.style.top = (cardRect.top + Math.random() * cardRect.height) + 'px';
-                    
-                    document.body.appendChild(particle);
-                    
-                    // Animate particle
-                    let opacity = 1;
-                    let y = 0;
-                    const animate = () => {
-                        opacity -= 0.02;
-                        y -= 2;
-                        particle.style.opacity = opacity;
-                        particle.style.transform = `translateY(${y}px)`;
-                        
-                        if (opacity > 0) {
-                            requestAnimationFrame(animate);
-                        } else {
-                            document.body.removeChild(particle);
-                        }
-                    };
-                    animate();
-                }, i * 100);
-            }
+                    newButton.style.display = 'inline-block';
+                }, 1000);
+
+            }, 2000);
         }
 
-        // Card click handler
-        document.getElementById('tarotCard').addEventListener('click', () => {
-            if (!isCardFlipped) {
-                drawCard();
-            }
-        });
+        // New Reading Function
+        function newReading() {
+            const card = document.getElementById('oracle-card');
+            const drawButton = document.getElementById('draw-card');
+            const newButton = document.getElementById('new-reading');
 
-        // Add floating animation to symbols
-        const symbols = document.querySelectorAll('.symbol');
-        symbols.forEach((symbol, index) => {
-            symbol.style.animationDelay = `${index * 0.5}s`;
-        });
-
-        // Analytics (if you add Google Analytics later)
-        function trackReading(cardName) {
-            // gtag('event', 'tarot_reading', {
-            //     'card_name': cardName,
-            //     'event_category': 'engagement'
-            // });
+            // Reset card
+            card.classList.remove('flipped');
+            
+            // Reset buttons
+            setTimeout(() => {
+                drawButton.style.display = 'inline-block';
+                newButton.style.display = 'none';
+                
+                // Reset card content
+                document.getElementById('card-title').textContent = "The Seeker's Path";
+                document.getElementById('card-symbol').textContent = "🔮";
+                document.getElementById('card-message').textContent = "Click \"Draw Card\" to receive your guidance from the shadows between worlds.";
+            }, 400);
         }
+
+        // Add sound effects (optional - requires audio files)
+        function playSound(soundName) {
+            // Implementation for atmospheric sounds
+            // Could include: card flip, mystical ambience, raven calls
+        }
+
+        // Initialize particles animation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Additional initialization if needed
+            console.log('Shadow Weaver Oracle initialized');
+        });
     </script>
 </body>
 </html>
